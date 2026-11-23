@@ -1,0 +1,10 @@
+ÁNIMO VIRTUAL - Sitio web en PHP (proyecto de práctica)
+
+CÓMO VERLO EN TU COMPUTADOR (con XAMPP)
+1. Instala XAMPP y enciende Apache desde el Panel de Control de XAMPP.
+2. Copia ESTA carpeta (psicologia-virtual) dentro de  C:\xampp\htdocs\
+   Debe quedar:  C:\xampp\htdocs\psicologia-virtual\index.php
+3. Abre el navegador y escribe:  http://localhost/psicologia-virtual/
+
+IMPORTANTE: no abras index.php con doble clic. Siempre usa la dirección http://localhost/...
+Los servicios, textos y precios son de ejemplo. No es un servicio de salud real.

@@ -1,0 +1,169 @@
+/*
+ * css/estilos.css
+ * -------------------------------------------------------------
+ * LA "ROPA" DEL SITIO: colores, tamaños, formas y espacios.
+ *
+ * CSS funciona con "reglas":  lo-que-quiero-cambiar { propiedad: valor; }
+ * Ejemplo:  h1 { color: red; }  pinta de rojo todos los títulos h1.
+ *
+ * Arriba definimos los colores en "variables" (--verde, --crema...).
+ * Así, si quieres cambiar el color del sitio, lo cambias en UN solo lugar.
+ */
+
+:root {
+    --verde: #1F6F6A;
+    --verde-oscuro: #154E4B;
+    --verde-claro: #E3F0EE;
+    --crema: #F8F5EF;
+    --blanco: #FFFFFF;
+    --texto: #1F2A33;
+    --suave: #52616B;
+    --coral: #B8472F;
+    --borde: #D5DEE0;
+    --sombra: 0 8px 24px rgba(31, 42, 51, 0.08);
+    --radio: 16px;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--texto);
+    background: var(--crema);
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.6rem; color: var(--verde-oscuro); }
+h1 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+h3 { font-size: 1.2rem; }
+p  { margin: 0 0 1rem; }
+a  { color: var(--verde); }
+
+.contenedor { width: min(1120px, 100% - 2rem); margin-inline: auto; }
+.contenedor-angosto { width: min(720px, 100% - 2rem); }
+
+.lead { font-size: 1.15rem; color: var(--suave); max-width: 62ch; }
+.solo-lectores { position: absolute; left: -9999px; }
+
+.salto { position: absolute; left: -9999px; top: 0; background: var(--verde-oscuro); color: #fff; padding: 0.6rem 1rem; z-index: 20; }
+.salto:focus { left: 0; }
+
+:focus-visible { outline: 3px solid #7BB8B1; outline-offset: 2px; }
+
+/* ---------- Cabecera y menú ---------- */
+.cabecera { background: var(--blanco); border-bottom: 1px solid var(--borde); position: sticky; top: 0; z-index: 10; }
+.cabecera-interna { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem 1.5rem; padding: 0.8rem 0; }
+.marca { font-size: 1.35rem; font-weight: 700; color: var(--verde-oscuro); text-decoration: none; }
+.menu { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.menu a { text-decoration: none; color: var(--texto); padding: 0.45rem 1rem; border-radius: 999px; font-weight: 600; }
+.menu a:hover { background: var(--verde-claro); }
+.menu a.activo { background: var(--verde); color: #fff; }
+
+/* ---------- Botones ---------- */
+.boton { display: inline-block; background: var(--verde); color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 0.75rem 1.5rem; border-radius: 999px; border: 2px solid var(--verde); cursor: pointer; font-family: inherit; }
+.boton:hover { background: var(--verde-oscuro); border-color: var(--verde-oscuro); }
+.boton-secundario { background: transparent; color: var(--verde-oscuro); }
+.boton-secundario:hover { background: var(--verde-claro); color: var(--verde-oscuro); }
+.botones { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
+
+/* ---------- Portada (hero) ---------- */
+.hero { background: linear-gradient(135deg, #D7EAE7 0%, var(--crema) 70%); padding: 3.5rem 0; }
+.hero-interna { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center; }
+.hero-subtitulo { font-size: 1.2rem; color: var(--suave); max-width: 48ch; }
+.hero-visual { position: relative; min-height: 260px; display: grid; place-items: center; }
+.burbuja { width: 190px; height: 190px; border-radius: 50%; background: var(--verde); display: grid; place-items: center; font-size: 5rem; box-shadow: var(--sombra); }
+.chip-flotante { position: absolute; background: #fff; border: 1px solid var(--borde); border-radius: 999px; padding: 0.4rem 0.9rem; font-weight: 600; font-size: 0.9rem; box-shadow: var(--sombra); color: var(--verde-oscuro); }
+.chip-1 { top: 12%; left: 4%; }
+.chip-2 { top: 40%; right: 0; }
+.chip-3 { bottom: 8%; left: 10%; }
+
+/* ---------- Secciones ---------- */
+.seccion { padding: 3rem 0; }
+.seccion-clara { background: var(--blanco); border-block: 1px solid var(--borde); }
+.seccion-encabezado { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 1.2rem; }
+.enlace-flecha { font-weight: 700; }
+.separado { margin-top: 2.5rem; }
+
+.etiqueta { display: inline-block; background: var(--verde-claro); color: var(--verde-oscuro); font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 999px; margin-bottom: 0.5rem; }
+.etiqueta-clara { background: #fff; }
+
+/* ---------- Pasos ---------- */
+.pasos { list-style: none; padding: 0; margin: 1.2rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; }
+.paso { background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio); padding: 1.4rem; }
+.paso-numero { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--coral); color: #fff; font-weight: 700; margin-bottom: 0.8rem; }
+.paso p { margin: 0; color: var(--suave); }
+
+/* ---------- Tarjetas de servicio ---------- */
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.3rem; }
+.tarjeta { background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio); padding: 1.4rem; display: flex; flex-direction: column; box-shadow: var(--sombra); }
+.tarjeta h3 { margin-bottom: 0.4rem; }
+.tarjeta p { color: var(--suave); }
+.tarjeta-icono { width: 3.2rem; height: 3.2rem; border-radius: 14px; background: var(--verde-claro); display: grid; place-items: center; font-size: 1.7rem; margin-bottom: 0.8rem; }
+.tarjeta .etiqueta { align-self: flex-start; }
+.datos-rapidos { list-style: none; padding: 0; margin: 0 0 0.6rem; font-size: 0.92rem; color: var(--suave); }
+.precio { font-weight: 700; color: var(--texto) !important; margin-top: auto; }
+.tarjeta .boton { text-align: center; }
+
+/* ---------- Filtro ---------- */
+.filtros { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.2rem 0 0.8rem; }
+.chip { text-decoration: none; background: var(--blanco); border: 1.5px solid var(--borde); color: var(--texto); padding: 0.4rem 1rem; border-radius: 999px; font-weight: 600; font-size: 0.95rem; }
+.chip:hover { border-color: var(--verde); }
+.chip.activo { background: var(--verde); border-color: var(--verde); color: #fff; }
+.resultado { color: var(--suave); margin-bottom: 1.2rem; }
+
+/* ---------- Detalle de servicio ---------- */
+.migas { margin-bottom: 1rem; }
+.detalle { background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio); padding: clamp(1.2rem, 4vw, 2.2rem); box-shadow: var(--sombra); }
+.detalle-cabecera { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1rem; }
+.detalle-icono { width: 4.4rem; height: 4.4rem; border-radius: 18px; background: var(--verde-claro); display: grid; place-items: center; font-size: 2.4rem; flex-shrink: 0; }
+.detalle-cabecera h1 { margin: 0; }
+.datos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.9rem; margin: 1.4rem 0; }
+.dato { background: var(--crema); border: 1px solid var(--borde); border-radius: 12px; padding: 0.8rem 1rem; }
+.dato dt { font-size: 0.8rem; font-weight: 700; color: var(--suave); text-transform: uppercase; letter-spacing: 0.04em; }
+.dato dd { margin: 0.2rem 0 0; font-weight: 700; }
+.lista-check { list-style: none; padding: 0; margin: 0.6rem 0 0; }
+.lista-check li { padding-left: 1.8rem; position: relative; margin-bottom: 0.4rem; }
+.lista-check li::before { content: "✓"; position: absolute; left: 0; color: var(--verde); font-weight: 700; }
+
+/* ---------- Formulario ---------- */
+.formulario { background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio); padding: clamp(1.2rem, 4vw, 2rem); box-shadow: var(--sombra); }
+.campo { margin: 0 0 1.2rem; padding: 0; border: 0; }
+.campo label, .campo legend { display: block; font-weight: 700; margin-bottom: 0.35rem; padding: 0; }
+.campo input[type="text"], .campo input[type="email"], .campo input[type="date"], .campo select, .campo textarea {
+    width: 100%; font: inherit; padding: 0.7rem 0.9rem; border: 1.5px solid #8FA3A8; border-radius: 10px; background: #fff; color: var(--texto);
+}
+.opciones { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; }
+.campo label.opcion { display: flex; align-items: flex-start; gap: 0.5rem; font-weight: 500; margin-bottom: 0; }
+.campo input[type="radio"], .campo input[type="checkbox"] { width: 1.15rem; height: 1.15rem; margin-top: 0.25rem; accent-color: var(--verde); }
+
+/* ---------- Alertas y resumen ---------- */
+.alerta { border-radius: 12px; padding: 1rem 1.2rem; margin: 1rem 0 1.4rem; border: 1.5px solid; }
+.alerta ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+.alerta-error { background: #FBEAE6; border-color: var(--coral); color: #6E2412; }
+.alerta-exito { background: #E5F3EA; border-color: #2E7D4F; color: #17432A; }
+.resumen { background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio); padding: 1.6rem; box-shadow: var(--sombra); }
+.resumen dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.2rem; margin: 0 0 1rem; }
+.resumen dt { font-weight: 700; color: var(--suave); }
+.resumen dd { margin: 0; }
+.nota { font-size: 0.95rem; color: var(--suave); }
+
+/* ---------- Pie de página ---------- */
+.pie { background: var(--verde-oscuro); color: #E8F2F1; padding: 2.2rem 0; margin-top: 2rem; }
+.pie-interna { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.pie p { margin: 0 0 0.6rem; }
+.pie-marca { font-size: 1.2rem; font-weight: 700; color: #fff; }
+.aviso-ayuda { background: rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 1rem 1.2rem; }
+.pie-nota { font-size: 0.9rem; opacity: 0.9; }
+
+/* ---------- Pantallas pequeñas (celulares) ---------- */
+@media (max-width: 760px) {
+    .hero-interna, .pie-interna { grid-template-columns: 1fr; }
+    .hero-visual { min-height: 200px; }
+    .burbuja { width: 140px; height: 140px; font-size: 3.6rem; }
+    .resumen dl { grid-template-columns: 1fr; gap: 0.1rem; }
+    .resumen dd { margin-bottom: 0.7rem; }
+}
